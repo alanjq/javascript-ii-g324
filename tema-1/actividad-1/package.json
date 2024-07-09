@@ -1,0 +1,23 @@
+{
+  "name": "actividad-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "node"
+  ],
+  "author": "Alan Jimenez<alan.jimenez@tecmilenio.mx>",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "eslint": "^9.6.0",
+    "json-server": "^1.0.0-beta.1",
+    "moment": "^2.30.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
