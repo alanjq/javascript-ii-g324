@@ -8,6 +8,8 @@
 
 [proyecto.zip](./proyecto.zip)
 
+[Lista de sesiones](https://youtube.com/playlist?list=PLXDgesVAFKPb84pZnR4wLv2fk4JeYTOaZ&si=Y_4Awv9fvTxRoRiF)
+
 ## Sesiones
 [Sesión 1](https://youtu.be/ttGm3OdRylE)
 
