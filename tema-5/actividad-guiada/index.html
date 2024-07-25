@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla cargada dinámicamente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Estilos de la tabla -->
+    <style>
+        body {
+            background-color: cornflowerblue;
+        }
+
+        table thead {
+            background-color: #302B63;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4 shadow-lg p-3 mb-5 bg-body-rounded">
+        <h1>Uso de Fetch + Bootstrap</h1>
+
+        <!-- Tabla con contenido dinámico -->
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="data"></tbody>
+        </table>
+        <!-- Fin de tabla con contenido dinámico -->
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Cargar contenido de la tabla -->
+    <script>
+        const URL_API = "https://jsonplaceholder.typicode.com/users"
+        fetch(URL_API)
+        .then(r=>r.json())
+        .then(response=>{
+            console.log('cargar tabla', response);
+            mostrarData(response)
+        })
+        .catch(error=>console.error(error))
+
+
+        const mostrarData = (datos) => {
+            let htmlTabla = ""
+            datos.map((usuario)=>{
+                htmlTabla += `<tr><td>${usuario.id}</td><td>${usuario.name}</td><td>${usuario.email}</td></tr>`
+            })
+
+            document.getElementById('data').innerHTML = htmlTabla
+        }
+    </script>
+</body>
+
+</html>

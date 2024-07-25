@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="titulo">Sitio web sin información externa</h1>
+    <button type="button" onclick="cargarXHR()">Cargar título superior</button>
+    <hr />
+    <p id="title">Esta es la información que se agregó recientemente al sitio.</p>
+    <button type="button" onclick="cargarFetch()">Cargar título inferior</button>
+
+    <script>
+        function cargarXHR() {
+            //Petición XHR
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) { // Si ya cargó
+                    if (this.status == 200) {
+                        // Hacer lo que queramos con la información obtenida
+                        var respuesta = JSON.parse(this.responseText)
+                        console.log(respuesta);
+                        document.getElementById("titulo").innerText = respuesta.title
+                    }
+                    else {
+                        alert('Falló la petición XHR')
+                    }
+                }
+            }
+            xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1")
+            xhr.send()
+        }
+
+
+        function cargarFetch() {
+            // Petición con Fetch
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json()
+                    }
+                    throw new Error('Falló al pedir la información.')
+                })
+                .then(response => {
+                    document.getElementById('title').innerText = response.title
+                })
+                .catch(error => {
+                    console.log('Falló', error);
+                })
+        }
+
+        function cargarJSON(){
+            fetch('./ejemplo.json')
+            .then((response)=>response.json())
+            .then((data)=>console.log('JSON', data))
+        }
+    </script>
+</body>
+
+</html>
